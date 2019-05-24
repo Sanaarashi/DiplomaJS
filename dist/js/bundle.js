@@ -181,6 +181,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var formdata_polyfill__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(formdata_polyfill__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _parts_present__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./parts/present */ "./src/js/parts/present.js");
 /* harmony import */ var _parts_calc__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./parts/calc */ "./src/js/parts/calc.js");
+/* harmony import */ var _parts_consult__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./parts/consult */ "./src/js/parts/consult.js");
+
 
 
 
@@ -190,6 +192,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
   Object(_parts_present__WEBPACK_IMPORTED_MODULE_2__["present"])();
   Object(_parts_calc__WEBPACK_IMPORTED_MODULE_3__["calculate"])();
+  Object(_parts_consult__WEBPACK_IMPORTED_MODULE_4__["consult"])();
 });
 
 /***/ }),
@@ -237,6 +240,31 @@ var calculate = function calculate() {
       calcPrice.innerText = temp;
     } else {
       calcPrice.innerText = calcValue;
+    }
+  });
+};
+
+/***/ }),
+
+/***/ "./src/js/parts/consult.js":
+/*!*********************************!*\
+  !*** ./src/js/parts/consult.js ***!
+  \*********************************/
+/*! exports provided: consult */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "consult", function() { return consult; });
+var consult = function consult() {
+  var consultation = document.querySelector('.popup-consultation');
+  document.body.addEventListener('click', function (event) {
+    var target = event.target;
+
+    if (target.classList.contains('button-consultation')) {
+      consultation.style.display = 'block';
+    } else if (target.classList.contains('popup-close') || target.classList.contains('popup-consultation')) {
+      consultation.style.display = 'none';
     }
   });
 };
