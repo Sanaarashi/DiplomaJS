@@ -180,6 +180,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var formdata_polyfill__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! formdata-polyfill */ "./node_modules/formdata-polyfill/formdata.min.js");
 /* harmony import */ var formdata_polyfill__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(formdata_polyfill__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _parts_present__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./parts/present */ "./src/js/parts/present.js");
+/* harmony import */ var _parts_calc__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./parts/calc */ "./src/js/parts/calc.js");
+
 
 
 
@@ -187,7 +189,57 @@ window.addEventListener('DOMContentLoaded', function () {
   'use strict';
 
   Object(_parts_present__WEBPACK_IMPORTED_MODULE_2__["present"])();
+  Object(_parts_calc__WEBPACK_IMPORTED_MODULE_3__["calculate"])();
 });
+
+/***/ }),
+
+/***/ "./src/js/parts/calc.js":
+/*!******************************!*\
+  !*** ./src/js/parts/calc.js ***!
+  \******************************/
+/*! exports provided: calculate */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "calculate", function() { return calculate; });
+var calculate = function calculate() {
+  var calc = document.querySelector('.calc'),
+      size = document.querySelector('#size'),
+      material = document.querySelector('#material'),
+      options = document.querySelector('#options'),
+      promocode = document.querySelector('.promocode'),
+      calcPrice = document.querySelector('.calc-price');
+  var calcValue, sizeVal, matVal, optVal;
+  calc.addEventListener('change', function () {
+    sizeVal = +size.options[size.selectedIndex].value;
+    matVal = +material.options[material.selectedIndex].value;
+    optVal = +options.options[options.selectedIndex].value;
+
+    if (sizeVal > 0 && matVal > 0) {
+      if (optVal > 0) {
+        calcValue = sizeVal + matVal + optVal;
+      } else {
+        calcValue = sizeVal + matVal;
+      }
+    }
+
+    calcPrice.innerText = calcValue;
+
+    if (sizeVal == undefined || matVal == undefined || sizeVal == 0 || matVal == 0) {
+      calcPrice.innerText = "0";
+    }
+  });
+  promocode.addEventListener('input', function () {
+    if (promocode.value == 'IWANTPOPART') {
+      var temp = calcValue - calcValue / 100 * 30;
+      calcPrice.innerText = temp;
+    } else {
+      calcPrice.innerText = calcValue;
+    }
+  });
+};
 
 /***/ }),
 
