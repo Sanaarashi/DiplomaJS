@@ -2,32 +2,35 @@ export const present = () => {
 
     let giftBtn = document.querySelector('.fixed-gift'),
         giftModal = document.querySelector('.popup-gift'),
-        btns = document.querySelectorAll('button'),
         isABtnPressed = false;
 
-    giftBtn.addEventListener('click', () => {
-        giftModal.style.display = 'block';
-        giftBtn.style.display = 'none';
-    });
+    const showGift = (display, overflow, giftButton) => {
+        if (giftButton) giftBtn.style.display = giftButton;
+        giftModal.style.display = display;
+        document.body.style.overflow = overflow;
+    };
 
     document.body.addEventListener('click', (event) => {
         let target = event.target;
 
-        if (target.classList.contains('popup-gift') || target.classList.contains('popup-close')) {
-            giftModal.style.display = 'none';
+        if (target.classList.contains('fixed-gift')) {
+            showGift('block', 'hidden', 'none');
         }
-    });
 
-    btns.forEach((elem) => {
-        elem.addEventListener('click', () => {
+        if (target.classList.contains('popup-gift') || target.classList.contains('popup-close')) {
+            showGift('none', '');
+        }
+
+        if (target.tagName == 'BUTTON') {
             isABtnPressed = true;
-        });
+        }    
     });
 
     window.addEventListener('scroll', () => {
-        if ((!isABtnPressed) && document.documentElement.scrollTop > 14000) {
+        if ((!isABtnPressed) && document.documentElement.scrollTop > 13600) {
             giftModal.style.display = 'block';
             giftBtn.style.display = 'none';
+            document.body.style.overflow = 'hidden';
         }
     });
 };
