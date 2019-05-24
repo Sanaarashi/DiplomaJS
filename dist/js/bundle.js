@@ -255,7 +255,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "present", function() { return present; });
 var present = function present() {
   var giftBtn = document.querySelector('.fixed-gift'),
-      giftModal = document.querySelector('.popup-gift');
+      giftModal = document.querySelector('.popup-gift'),
+      btns = document.querySelectorAll('button'),
+      isABtnPressed = false;
   giftBtn.addEventListener('click', function () {
     giftModal.style.display = 'block';
     giftBtn.style.display = 'none';
@@ -265,6 +267,17 @@ var present = function present() {
 
     if (target.classList.contains('popup-gift') || target.classList.contains('popup-close')) {
       giftModal.style.display = 'none';
+    }
+  });
+  btns.forEach(function (elem) {
+    elem.addEventListener('click', function () {
+      isABtnPressed = true;
+    });
+  });
+  window.addEventListener('scroll', function () {
+    if (!isABtnPressed && document.documentElement.scrollTop > 14000) {
+      giftModal.style.display = 'block';
+      giftBtn.style.display = 'none';
     }
   });
 };
