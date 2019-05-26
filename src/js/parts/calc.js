@@ -9,9 +9,13 @@ export const calculate = () => {
     let calcValue, sizeVal, matVal, optVal;
 
     calc.addEventListener('change', () => {
+        let discount = false;
+
         sizeVal = +size.options[size.selectedIndex].value;
         matVal = +material.options[material.selectedIndex].value;
         optVal = +options.options[options.selectedIndex].value;
+
+
 
         if (sizeVal > 0 && matVal > 0) {
             if (optVal > 0) {
@@ -21,7 +25,15 @@ export const calculate = () => {
             }
         }
 
-        calcPrice.innerText = calcValue;
+        if (promocode.value.trim() == 'IWANTPOPART') {
+            discount = true;
+        }
+
+        if (discount) {
+        calcPrice.innerText = calcValue - (calcValue / 100 * 30);
+        } else {
+            calcPrice.innerText = calcValue;
+        }
 
         if (sizeVal == undefined || matVal == undefined || sizeVal == 0 || matVal == 0) {
             calcPrice.innerText = "0";
@@ -29,12 +41,4 @@ export const calculate = () => {
 
     });
 
-    promocode.addEventListener('input', () => {
-        if (promocode.value == 'IWANTPOPART') {
-            let temp = calcValue - (calcValue / 100 * 30);
-            calcPrice.innerText = temp;
-        } else {
-            calcPrice.innerText = calcValue;
-        }
-    });
 };
