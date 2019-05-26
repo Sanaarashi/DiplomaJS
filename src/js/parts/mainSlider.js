@@ -7,12 +7,12 @@ export const mainSlider = () => {
 
         mSliderItems[mSlideIndex - 1].style.display = 'block';
         mSliderItems[mSlideIndex - 1].classList.add('animated');
-        mSliderItems[mSlideIndex - 1].classList.add('slideInDown');
+        mSliderItems[mSlideIndex - 1].classList.add('fadeInDown');
         mSlideIndex++;
         if (mSlideIndex > mSliderItems.length) mSlideIndex = 1;
     };
 
     showNextMSlide();
 
-    setInterval(showNextMSlide, 6000);
+    setInterval(showNextMSlide, 4500);
 };

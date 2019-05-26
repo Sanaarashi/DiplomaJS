@@ -48,7 +48,7 @@ export const showAllModals = () => {
     });
 
     window.addEventListener('scroll', () => {
-        if ((!isABtnPressed) && document.documentElement.scrollTop > 13600) {
+        if ((!isABtnPressed) && document.documentElement.scrollTop > 12000) {
             showModal(giftModal, true, 'block', 'hidden', 'none');
         }
     });

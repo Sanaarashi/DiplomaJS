@@ -5,6 +5,7 @@ import {sizes} from './parts/sizes';
 import {showAllModals} from './parts/modals';
 import {moreBlocks} from './parts/moreBlocks';
 import {mainSlider} from './parts/mainSlider';
+import {feedbackSlider} from './parts/feedbackSlider';
 
 window.addEventListener('DOMContentLoaded', () => {
     'use strict';
@@ -14,4 +15,5 @@ window.addEventListener('DOMContentLoaded', () => {
     showAllModals();
     moreBlocks();
     mainSlider();
+    feedbackSlider();
 });
