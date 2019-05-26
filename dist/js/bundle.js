@@ -183,6 +183,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _parts_sizes__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./parts/sizes */ "./src/js/parts/sizes.js");
 /* harmony import */ var _parts_modals__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./parts/modals */ "./src/js/parts/modals.js");
 /* harmony import */ var _parts_moreBlocks__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./parts/moreBlocks */ "./src/js/parts/moreBlocks.js");
+/* harmony import */ var _parts_mainSlider__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./parts/mainSlider */ "./src/js/parts/mainSlider.js");
+
 
 
 
@@ -196,6 +198,7 @@ window.addEventListener('DOMContentLoaded', function () {
   Object(_parts_sizes__WEBPACK_IMPORTED_MODULE_3__["sizes"])();
   Object(_parts_modals__WEBPACK_IMPORTED_MODULE_4__["showAllModals"])();
   Object(_parts_moreBlocks__WEBPACK_IMPORTED_MODULE_5__["moreBlocks"])();
+  Object(_parts_mainSlider__WEBPACK_IMPORTED_MODULE_6__["mainSlider"])();
 });
 
 /***/ }),
@@ -246,6 +249,37 @@ var calculate = function calculate() {
       calcPrice.innerText = "0";
     }
   });
+};
+
+/***/ }),
+
+/***/ "./src/js/parts/mainSlider.js":
+/*!************************************!*\
+  !*** ./src/js/parts/mainSlider.js ***!
+  \************************************/
+/*! exports provided: mainSlider */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mainSlider", function() { return mainSlider; });
+var mainSlider = function mainSlider() {
+  var mSliderItems = document.body.querySelectorAll('.main-slider-item'),
+      mSlideIndex = 1;
+
+  var showNextMSlide = function showNextMSlide() {
+    mSliderItems.forEach(function (elem) {
+      elem.style.display = 'none';
+    });
+    mSliderItems[mSlideIndex - 1].style.display = 'block';
+    mSliderItems[mSlideIndex - 1].classList.add('animated');
+    mSliderItems[mSlideIndex - 1].classList.add('slideInDown');
+    mSlideIndex++;
+    if (mSlideIndex > mSliderItems.length) mSlideIndex = 1;
+  };
+
+  showNextMSlide();
+  setInterval(showNextMSlide, 6000);
 };
 
 /***/ }),

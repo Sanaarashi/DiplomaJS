@@ -4,6 +4,7 @@ import {calculate} from './parts/calc';
 import {sizes} from './parts/sizes';
 import {showAllModals} from './parts/modals';
 import {moreBlocks} from './parts/moreBlocks';
+import {mainSlider} from './parts/mainSlider';
 
 window.addEventListener('DOMContentLoaded', () => {
     'use strict';
@@ -12,4 +13,5 @@ window.addEventListener('DOMContentLoaded', () => {
     sizes();
     showAllModals();
     moreBlocks();
+    mainSlider();
 });
