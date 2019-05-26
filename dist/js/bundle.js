@@ -182,6 +182,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _parts_calc__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./parts/calc */ "./src/js/parts/calc.js");
 /* harmony import */ var _parts_sizes__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./parts/sizes */ "./src/js/parts/sizes.js");
 /* harmony import */ var _parts_modals__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./parts/modals */ "./src/js/parts/modals.js");
+/* harmony import */ var _parts_moreBlocks__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./parts/moreBlocks */ "./src/js/parts/moreBlocks.js");
+
 
 
 
@@ -193,6 +195,7 @@ window.addEventListener('DOMContentLoaded', function () {
   Object(_parts_calc__WEBPACK_IMPORTED_MODULE_2__["calculate"])();
   Object(_parts_sizes__WEBPACK_IMPORTED_MODULE_3__["sizes"])();
   Object(_parts_modals__WEBPACK_IMPORTED_MODULE_4__["showAllModals"])();
+  Object(_parts_moreBlocks__WEBPACK_IMPORTED_MODULE_5__["moreBlocks"])();
 });
 
 /***/ }),
@@ -308,12 +311,36 @@ var showAllModals = function showAllModals() {
   });
   window.addEventListener('scroll', function () {
     if (!isABtnPressed && document.documentElement.scrollTop > 13600) {
-      giftModal.style.display = 'block';
-      giftBtn.style.display = 'none';
-      document.body.style.overflow = 'hidden';
+      showModal(giftModal, true, 'block', 'hidden', 'none');
     }
   });
   setTimeout(timer, 60000);
+};
+
+/***/ }),
+
+/***/ "./src/js/parts/moreBlocks.js":
+/*!************************************!*\
+  !*** ./src/js/parts/moreBlocks.js ***!
+  \************************************/
+/*! exports provided: moreBlocks */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "moreBlocks", function() { return moreBlocks; });
+var moreBlocks = function moreBlocks() {
+  var moreBlocks = document.body.querySelectorAll('.hidden-lg');
+  document.body.addEventListener('click', function (event) {
+    var target = event.target;
+
+    if (target.classList.contains('button-styles')) {
+      target.style.display = 'none';
+      moreBlocks.forEach(function (elem) {
+        elem.className = 'col-sm-3 col-sm-offset-0 col-xs-10 col-xs-offset-1';
+      });
+    }
+  });
 };
 
 /***/ }),

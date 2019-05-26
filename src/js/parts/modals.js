@@ -49,9 +49,7 @@ export const showAllModals = () => {
 
     window.addEventListener('scroll', () => {
         if ((!isABtnPressed) && document.documentElement.scrollTop > 13600) {
-            giftModal.style.display = 'block';
-            giftBtn.style.display = 'none';
-            document.body.style.overflow = 'hidden';
+            showModal(giftModal, true, 'block', 'hidden', 'none');
         }
     });
 
