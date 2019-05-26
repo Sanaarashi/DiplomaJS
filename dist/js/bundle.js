@@ -185,6 +185,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _parts_moreBlocks__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./parts/moreBlocks */ "./src/js/parts/moreBlocks.js");
 /* harmony import */ var _parts_mainSlider__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./parts/mainSlider */ "./src/js/parts/mainSlider.js");
 /* harmony import */ var _parts_feedbackSlider__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./parts/feedbackSlider */ "./src/js/parts/feedbackSlider.js");
+/* harmony import */ var _parts_accordeon__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./parts/accordeon */ "./src/js/parts/accordeon.js");
+
 
 
 
@@ -202,7 +204,54 @@ window.addEventListener('DOMContentLoaded', function () {
   Object(_parts_moreBlocks__WEBPACK_IMPORTED_MODULE_5__["moreBlocks"])();
   Object(_parts_mainSlider__WEBPACK_IMPORTED_MODULE_6__["mainSlider"])();
   Object(_parts_feedbackSlider__WEBPACK_IMPORTED_MODULE_7__["feedbackSlider"])();
+  Object(_parts_accordeon__WEBPACK_IMPORTED_MODULE_8__["accordeon"])();
 });
+
+/***/ }),
+
+/***/ "./src/js/parts/accordeon.js":
+/*!***********************************!*\
+  !*** ./src/js/parts/accordeon.js ***!
+  \***********************************/
+/*! exports provided: accordeon */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "accordeon", function() { return accordeon; });
+var accordeon = function accordeon() {
+  var aHeadings = document.querySelectorAll('.accordion-heading'),
+      aBlocks = document.querySelectorAll('.accordion-block'),
+      target;
+  aBlocks.forEach(function (elem) {
+    elem.style.display = 'none';
+  });
+
+  var showAnswer = function showAnswer(target) {
+    aHeadings.forEach(function (elem) {
+      elem.classList.remove('ui-accordion-header-active');
+    });
+    aBlocks.forEach(function (elem) {
+      elem.style.display = 'none';
+    });
+    target.classList.add('ui-accordion-header-active');
+    target.nextElementSibling.style.display = 'block';
+    target.nextElementSibling.classList.add('animated');
+    target.nextElementSibling.classList.add('fadeInDown');
+  };
+
+  document.body.addEventListener('click', function (event) {
+    target = event.target;
+
+    if (target.classList.contains('accordion-heading')) {
+      showAnswer(target);
+    }
+
+    if (target.parentElement.classList.contains('accordion-heading')) {
+      showAnswer(target.parentElement);
+    }
+  });
+};
 
 /***/ }),
 
