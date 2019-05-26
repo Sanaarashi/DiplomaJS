@@ -270,8 +270,7 @@ var feedbackSlider = function feedbackSlider() {
   var fSlides = document.body.querySelectorAll('.feedback-slider-item'),
       nextSlBtn = document.body.querySelector('.main-next-btn'),
       prevSlBtn = document.body.querySelector('.main-prev-btn'),
-      fSlideIndex = 1,
-      isPrev = 1;
+      fSlideIndex = 1;
 
   var showFSlide = function showFSlide(n) {
     fSlides.forEach(function (elem) {
@@ -289,18 +288,19 @@ var feedbackSlider = function feedbackSlider() {
     fSlides[fSlideIndex - 1].classList.add('slideInLeft');
   };
 
-  var showNextFSlide = function showNextFSlide(n, prevOrNext) {
+  var showNextFSlide = function showNextFSlide() {
+    var n = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
     showFSlide(fSlideIndex += n);
-    isPrev = prevOrNext;
   };
 
   nextSlBtn.addEventListener('click', function () {
-    showNextFSlide(1, 1);
+    showNextFSlide(1);
   });
   prevSlBtn.addEventListener('click', function () {
-    showNextFSlide(-1, 2);
+    showNextFSlide(-1);
   });
   showFSlide(fSlideIndex);
+  setInterval(showNextFSlide, 4000);
 };
 
 /***/ }),

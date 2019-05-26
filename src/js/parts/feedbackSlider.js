@@ -2,8 +2,7 @@ export const feedbackSlider = () => {
     let fSlides = document.body.querySelectorAll('.feedback-slider-item'),
         nextSlBtn = document.body.querySelector('.main-next-btn'),
         prevSlBtn = document.body.querySelector('.main-prev-btn'),
-        fSlideIndex = 1,
-        isPrev = 1;
+        fSlideIndex = 1;
 
     const showFSlide = (n) => {
         fSlides.forEach(elem => {
@@ -21,18 +20,19 @@ export const feedbackSlider = () => {
         fSlides[fSlideIndex - 1].classList.add('slideInLeft');
     };
 
-    const showNextFSlide = (n, prevOrNext) => {
+    const showNextFSlide = (n=1) => {
         showFSlide(fSlideIndex += n);
-        isPrev = prevOrNext;
     };
 
     nextSlBtn.addEventListener('click', () => {
-        showNextFSlide(1, 1);
+        showNextFSlide(1);
     });
 
     prevSlBtn.addEventListener('click', () => {
-        showNextFSlide(-1, 2);
+        showNextFSlide(-1);
     });
 
     showFSlide(fSlideIndex);
+
+    setInterval(showNextFSlide, 4000);
 };
