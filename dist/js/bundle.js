@@ -198,13 +198,13 @@ __webpack_require__.r(__webpack_exports__);
 window.addEventListener('DOMContentLoaded', function () {
   'use strict';
 
+  Object(_parts_accordeon__WEBPACK_IMPORTED_MODULE_8__["accordeon"])();
   Object(_parts_calc__WEBPACK_IMPORTED_MODULE_2__["calculate"])();
   Object(_parts_sizes__WEBPACK_IMPORTED_MODULE_3__["sizes"])();
   Object(_parts_modals__WEBPACK_IMPORTED_MODULE_4__["showAllModals"])();
   Object(_parts_moreBlocks__WEBPACK_IMPORTED_MODULE_5__["moreBlocks"])();
   Object(_parts_mainSlider__WEBPACK_IMPORTED_MODULE_6__["mainSlider"])();
   Object(_parts_feedbackSlider__WEBPACK_IMPORTED_MODULE_7__["feedbackSlider"])();
-  Object(_parts_accordeon__WEBPACK_IMPORTED_MODULE_8__["accordeon"])();
 });
 
 /***/ }),

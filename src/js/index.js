@@ -11,11 +11,11 @@ import {accordeon} from './parts/accordeon';
 window.addEventListener('DOMContentLoaded', () => {
     'use strict';
 
+    accordeon();
     calculate();
     sizes();
     showAllModals();
     moreBlocks();
     mainSlider();
-    feedbackSlider();
-    accordeon();
+    feedbackSlider();  
 });

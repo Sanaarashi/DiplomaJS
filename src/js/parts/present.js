@@ -26,8 +26,8 @@ export const present = () => {
         }    
     });
 
-    window.addEventListener('scroll', () => {
-        if ((!isABtnPressed) && document.documentElement.scrollTop > 13600) {
+    document.body.addEventListener('scroll', () => {
+        if ((!isABtnPressed) && document.documentElement.scrollTop > 11000) {
             giftModal.style.display = 'block';
             giftBtn.style.display = 'none';
             document.body.style.overflow = 'hidden';
