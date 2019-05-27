@@ -1,12 +1,42 @@
 export const sizes = () => {
-    let size = document.querySelectorAll('[class^=size-]');
+    let prevIndex;
 
-    document.body.addEventListener('click', (event) => {
+    const showSizePic = (target, restInfo, onOrOff) => {
+        let temp = target.className.slice(-1);
+  
+
+        if (target.classList.contains(`size-${temp}`)) {
+            let infos = target.parentElement.querySelectorAll('p');
+            infos.forEach(elem => elem.style.display = restInfo);
+            target.setAttribute('src', `./img/sizes-${temp}${onOrOff}.png`);
+            prevIndex = target;
+        } else {
+            showSizePic(prevIndex, 'block', '');
+        }
+    };
+
+
+    document.body.addEventListener('mouseover', (event) => {
         let target = event.target;
 
-        if (target.classList.contains('size-1')) {
-            target.style.backgroundColor = 'red';
+        if (target.classList.contains(`size-${target.className.slice(-1)}`)) {
+        showSizePic(target, 'none', '-1');
         }
+    });
+
+    document.body.addEventListener('mouseout', (event) => {
+        let target = event.target;
+
+        if (target.classList.contains(`size-${target.className.slice(-1)}`)) {
+        showSizePic(target, 'block', '');
+        }
+    });
+
+    document.body.addEventListener('touchend', (event) => {
+        event.preventDefault();
+        let target = event.target;
+
+        showSizePic(target, 'none', '-1');
     });
 
 };
