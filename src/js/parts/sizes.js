@@ -1,5 +1,5 @@
 export const sizes = () => {
-    let prevIndex;
+    let prevIndex = '';
 
     const showSizePic = (target, restInfo, onOrOff) => {
         let temp = target.className.slice(-1);
@@ -10,8 +10,6 @@ export const sizes = () => {
             infos.forEach(elem => elem.style.display = restInfo);
             target.setAttribute('src', `./img/sizes-${temp}${onOrOff}.png`);
             prevIndex = target;
-        } else {
-            showSizePic(prevIndex, 'block', '');
         }
     };
 
@@ -36,7 +34,11 @@ export const sizes = () => {
         event.preventDefault();
         let target = event.target;
 
+        if (target.classList.contains(`size-${target.className.slice(-1)}`)) {
         showSizePic(target, 'none', '-1');
+        } else if (prevIndex != '') {
+            showSizePic(prevIndex, 'block', '');
+        }
     });
 
 };

@@ -541,7 +541,7 @@ var moreBlocks = function moreBlocks() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "sizes", function() { return sizes; });
 var sizes = function sizes() {
-  var prevIndex;
+  var prevIndex = '';
 
   var showSizePic = function showSizePic(target, restInfo, onOrOff) {
     var temp = target.className.slice(-1);
@@ -553,8 +553,6 @@ var sizes = function sizes() {
       });
       target.setAttribute('src', "./img/sizes-".concat(temp).concat(onOrOff, ".png"));
       prevIndex = target;
-    } else {
-      showSizePic(prevIndex, 'block', '');
     }
   };
 
@@ -575,7 +573,12 @@ var sizes = function sizes() {
   document.body.addEventListener('touchend', function (event) {
     event.preventDefault();
     var target = event.target;
-    showSizePic(target, 'none', '-1');
+
+    if (target.classList.contains("size-".concat(target.className.slice(-1)))) {
+      showSizePic(target, 'none', '-1');
+    } else if (prevIndex != '') {
+      showSizePic(prevIndex, 'block', '');
+    }
   });
 };
 
