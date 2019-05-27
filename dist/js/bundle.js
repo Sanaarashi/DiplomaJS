@@ -277,6 +277,7 @@ __webpack_require__.r(__webpack_exports__);
 var hamburger = function hamburger() {
   var burgerMenu = document.querySelector('.burger-menu');
   document.body.addEventListener('touchend', function (event) {
+    event.preventDefault();
     var target = event.target;
 
     if (target.classList.contains('burger') || target.parentElement.classList.contains('burger')) {
@@ -288,7 +289,6 @@ var hamburger = function hamburger() {
   });
   window.addEventListener('resize', function () {
     if (document.documentElement.scrollWidth > 768) {
-      burgerMenu.style.display = "block";
       burgerMenu.classList.remove('slideInLeft');
       burgerMenu.classList.add('slideOutLeft');
     }

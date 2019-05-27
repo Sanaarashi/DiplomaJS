@@ -2,6 +2,7 @@ export const hamburger = () => {
     let burgerMenu = document.querySelector('.burger-menu');
 
     document.body.addEventListener('touchend', (event) => {
+        event.preventDefault();
         let target = event.target;
 
         if (target.classList.contains('burger') || target.parentElement.classList.contains('burger')) {
@@ -14,7 +15,6 @@ export const hamburger = () => {
 
     window.addEventListener('resize', () => {
         if (document.documentElement.scrollWidth > 768) {
-            burgerMenu.style.display = "block";
             burgerMenu.classList.remove('slideInLeft');
             burgerMenu.classList.add('slideOutLeft');
         }
