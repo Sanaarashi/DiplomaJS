@@ -187,6 +187,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _parts_feedbackSlider__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./parts/feedbackSlider */ "./src/js/parts/feedbackSlider.js");
 /* harmony import */ var _parts_accordeon__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./parts/accordeon */ "./src/js/parts/accordeon.js");
 /* harmony import */ var _parts_filter__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./parts/filter */ "./src/js/parts/filter.js");
+/* harmony import */ var _parts_burger__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./parts/burger */ "./src/js/parts/burger.js");
+
 
 
 
@@ -208,6 +210,7 @@ window.addEventListener('DOMContentLoaded', function () {
   Object(_parts_moreBlocks__WEBPACK_IMPORTED_MODULE_5__["moreBlocks"])();
   Object(_parts_mainSlider__WEBPACK_IMPORTED_MODULE_6__["mainSlider"])();
   Object(_parts_feedbackSlider__WEBPACK_IMPORTED_MODULE_7__["feedbackSlider"])();
+  Object(_parts_burger__WEBPACK_IMPORTED_MODULE_10__["hamburger"])();
 });
 
 /***/ }),
@@ -252,6 +255,39 @@ var accordeon = function accordeon() {
 
     if (target.parentElement.classList.contains('accordion-heading')) {
       showAnswer(target.parentElement);
+    }
+  });
+};
+
+/***/ }),
+
+/***/ "./src/js/parts/burger.js":
+/*!********************************!*\
+  !*** ./src/js/parts/burger.js ***!
+  \********************************/
+/*! exports provided: hamburger */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "hamburger", function() { return hamburger; });
+var hamburger = function hamburger() {
+  var burgerMenu = document.querySelector('.burger-menu');
+  document.body.addEventListener('touchend', function (event) {
+    var target = event.target;
+
+    if (target.classList.contains('burger') || target.parentElement.classList.contains('burger')) {
+      burgerMenu.style.display = "block";
+      burgerMenu.classList.add('animated');
+      burgerMenu.classList.remove('slideOutLeft');
+      burgerMenu.classList.add('slideInLeft');
+    }
+  });
+  window.addEventListener('resize', function () {
+    if (document.documentElement.scrollWidth > 768) {
+      burgerMenu.style.display = "block";
+      burgerMenu.classList.remove('slideInLeft');
+      burgerMenu.classList.add('slideOutLeft');
     }
   });
 };

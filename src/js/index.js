@@ -8,6 +8,7 @@ import {mainSlider} from './parts/mainSlider';
 import {feedbackSlider} from './parts/feedbackSlider';
 import {accordeon} from './parts/accordeon';
 import {filterBlock} from './parts/filter';
+import {hamburger} from './parts/burger';
 
 window.addEventListener('DOMContentLoaded', () => {
     'use strict';
@@ -19,5 +20,6 @@ window.addEventListener('DOMContentLoaded', () => {
     showAllModals();
     moreBlocks();
     mainSlider();
-    feedbackSlider();  
+    feedbackSlider();
+    hamburger();  
 });

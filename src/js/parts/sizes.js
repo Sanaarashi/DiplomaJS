@@ -3,7 +3,7 @@ export const sizes = () => {
 
     const showSizePic = (target, restInfo, onOrOff) => {
         let temp = target.className.slice(-1);
-  
+
 
         if (target.classList.contains(`size-${temp}`)) {
             let infos = target.parentElement.querySelectorAll('p');
@@ -18,7 +18,7 @@ export const sizes = () => {
         let target = event.target;
 
         if (target.classList.contains(`size-${target.className.slice(-1)}`)) {
-        showSizePic(target, 'none', '-1');
+            showSizePic(target, 'none', '-1');
         }
     });
 
@@ -26,7 +26,7 @@ export const sizes = () => {
         let target = event.target;
 
         if (target.classList.contains(`size-${target.className.slice(-1)}`)) {
-        showSizePic(target, 'block', '');
+            showSizePic(target, 'block', '');
         }
     });
 
@@ -35,7 +35,7 @@ export const sizes = () => {
         let target = event.target;
 
         if (target.classList.contains(`size-${target.className.slice(-1)}`)) {
-        showSizePic(target, 'none', '-1');
+            showSizePic(target, 'none', '-1');
         } else if (prevIndex != '') {
             showSizePic(prevIndex, 'block', '');
         }
