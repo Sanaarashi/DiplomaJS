@@ -9,6 +9,7 @@ import {feedbackSlider} from './parts/feedbackSlider';
 import {accordeon} from './parts/accordeon';
 import {filterBlock} from './parts/filter';
 import {hamburger} from './parts/burger';
+import {allForms} from './parts/forms';
 
 window.addEventListener('DOMContentLoaded', () => {
     'use strict';
@@ -21,5 +22,6 @@ window.addEventListener('DOMContentLoaded', () => {
     moreBlocks();
     mainSlider();
     feedbackSlider();
-    hamburger();  
+    hamburger(); 
+    allForms(); 
 });

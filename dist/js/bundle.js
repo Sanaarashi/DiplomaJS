@@ -188,6 +188,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _parts_accordeon__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./parts/accordeon */ "./src/js/parts/accordeon.js");
 /* harmony import */ var _parts_filter__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./parts/filter */ "./src/js/parts/filter.js");
 /* harmony import */ var _parts_burger__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./parts/burger */ "./src/js/parts/burger.js");
+/* harmony import */ var _parts_forms__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./parts/forms */ "./src/js/parts/forms.js");
+
 
 
 
@@ -211,6 +213,7 @@ window.addEventListener('DOMContentLoaded', function () {
   Object(_parts_mainSlider__WEBPACK_IMPORTED_MODULE_6__["mainSlider"])();
   Object(_parts_feedbackSlider__WEBPACK_IMPORTED_MODULE_7__["feedbackSlider"])();
   Object(_parts_burger__WEBPACK_IMPORTED_MODULE_10__["hamburger"])();
+  Object(_parts_forms__WEBPACK_IMPORTED_MODULE_11__["allForms"])();
 });
 
 /***/ }),
@@ -435,6 +438,57 @@ var filterBlock = function filterBlock() {
     if (target.tagName == "LI") {
       filterSomeBlocks(target, target.className);
     }
+  });
+};
+
+/***/ }),
+
+/***/ "./src/js/parts/forms.js":
+/*!*******************************!*\
+  !*** ./src/js/parts/forms.js ***!
+  \*******************************/
+/*! exports provided: allForms */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "allForms", function() { return allForms; });
+var allForms = function allForms() {
+  document.body.addEventListener('input', function (e) {
+    var target = e.target;
+
+    if (target.getAttribute('name') == 'name' || target.getAttribute('name') == 'message') {
+      target.value = target.value.replace(/[^\W]/g, '');
+    }
+
+    if (target.getAttribute('name') == 'phone') {
+      target.value = '+' + target.value.replace(/[^\d]/g, '').slice(0, 11);
+      if (target.value.length == 1) target.value = '';
+    }
+  });
+  document.body.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var target = e.target;
+    var someForm = new FormData(target);
+    var temp = {};
+    someForm.forEach(function (data, key) {
+      temp[key] = data;
+    });
+    var json = JSON.stringify(temp);
+    fetch('server.php', {
+      method: 'post',
+      body: json
+    }).then(function (response) {
+      if (response.status == 200) {
+        target.innerHTML = 'Спасибо Вам';
+        target.style.cssText = 'background-color:pink;font-size:55px;border:2px dashed green;color:white; font-family:Circe Bold';
+      } else if (response.status > 400) {
+        throw Error;
+      }
+    }).catch(function () {
+      target.innerHTML = 'Что-то пошло не так...';
+      target.style.cssText = 'background-color:pink;font-size:55px;border:2px dashed green;color:white; font-family:Circe Bold';
+    });
   });
 };
 
