@@ -585,7 +585,7 @@ var showAllModals = function showAllModals() {
     }
   });
   window.addEventListener('scroll', function () {
-    if (!isABtnPressed && document.documentElement.scrollTop > 12000) {
+    if (!isABtnPressed && document.documentElement.scrollTop > 11500) {
       showModal(giftModal, true, 'block', 'hidden', 'none');
     }
   });
