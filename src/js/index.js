@@ -7,12 +7,14 @@ import {moreBlocks} from './parts/moreBlocks';
 import {mainSlider} from './parts/mainSlider';
 import {feedbackSlider} from './parts/feedbackSlider';
 import {accordeon} from './parts/accordeon';
+import {filterBlock} from './parts/filter';
 
 window.addEventListener('DOMContentLoaded', () => {
     'use strict';
 
     accordeon();
     calculate();
+    filterBlock();
     sizes();
     showAllModals();
     moreBlocks();

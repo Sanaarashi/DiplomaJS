@@ -186,6 +186,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _parts_mainSlider__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./parts/mainSlider */ "./src/js/parts/mainSlider.js");
 /* harmony import */ var _parts_feedbackSlider__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./parts/feedbackSlider */ "./src/js/parts/feedbackSlider.js");
 /* harmony import */ var _parts_accordeon__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./parts/accordeon */ "./src/js/parts/accordeon.js");
+/* harmony import */ var _parts_filter__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./parts/filter */ "./src/js/parts/filter.js");
+
 
 
 
@@ -200,6 +202,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
   Object(_parts_accordeon__WEBPACK_IMPORTED_MODULE_8__["accordeon"])();
   Object(_parts_calc__WEBPACK_IMPORTED_MODULE_2__["calculate"])();
+  Object(_parts_filter__WEBPACK_IMPORTED_MODULE_9__["filterBlock"])();
   Object(_parts_sizes__WEBPACK_IMPORTED_MODULE_3__["sizes"])();
   Object(_parts_modals__WEBPACK_IMPORTED_MODULE_4__["showAllModals"])();
   Object(_parts_moreBlocks__WEBPACK_IMPORTED_MODULE_5__["moreBlocks"])();
@@ -350,6 +353,53 @@ var feedbackSlider = function feedbackSlider() {
   });
   showFSlide(fSlideIndex);
   setInterval(showNextFSlide, 4000);
+};
+
+/***/ }),
+
+/***/ "./src/js/parts/filter.js":
+/*!********************************!*\
+  !*** ./src/js/parts/filter.js ***!
+  \********************************/
+/*! exports provided: filterBlock */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "filterBlock", function() { return filterBlock; });
+var filterBlock = function filterBlock() {
+  var portfolio = document.querySelector('#portfolio'),
+      portfolioBlock = document.querySelectorAll('.portfolio-block'),
+      btns = portfolio.querySelectorAll('li'),
+      noPortfolio = document.querySelector('.portfolio-no');
+
+  var filterSomeBlocks = function filterSomeBlocks(target, active) {
+    portfolioBlock.forEach(function (elem) {
+      elem.style.display = 'none';
+    });
+    noPortfolio.style.display = 'none';
+    btns.forEach(function (elem) {
+      if (elem.classList.contains('active')) elem.classList.remove('active');
+    });
+    target.classList.add('active');
+    portfolioBlock.forEach(function (elem) {
+      if (elem.classList.contains(active)) {
+        elem.style.display = 'block';
+      }
+
+      if (active == 'grandmother' || active == 'granddad') {
+        noPortfolio.style.display = 'block';
+      }
+    });
+  };
+
+  portfolio.addEventListener('click', function (event) {
+    var target = event.target;
+
+    if (target.tagName == "LI") {
+      filterSomeBlocks(target, target.className);
+    }
+  });
 };
 
 /***/ }),
