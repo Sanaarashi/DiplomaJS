@@ -44,6 +44,7 @@ export const sizes = () => {
         let target = event.target;
 
         if (target.classList.contains(`size-${target.className.slice(-1)}`)) {
+            clearAllPics();
             showSizePic(target, 'none', '-1');
         } else {
             clearAllPics();
