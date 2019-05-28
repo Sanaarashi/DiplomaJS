@@ -1,5 +1,6 @@
 export const sizes = () => {
-    let prevIndex = '';
+    let prevIndex = document.querySelectorAll('[class^=size-]');
+
 
     const showSizePic = (target, restInfo, onOrOff) => {
         let temp = target.className.slice(-1);
@@ -9,10 +10,18 @@ export const sizes = () => {
             let infos = target.parentElement.querySelectorAll('p');
             infos.forEach(elem => elem.style.display = restInfo);
             target.setAttribute('src', `./img/sizes-${temp}${onOrOff}.png`);
-            prevIndex = target;
+            //prevIndex = target;
         }
     };
 
+    const clearAllPics = () => {
+        for (let i = 0; i < prevIndex.length; i++) {
+            let temp = i;
+            let infos = prevIndex[i].parentElement.querySelectorAll('p');
+            infos.forEach(elem => elem.style.display = 'block');
+            prevIndex[i].setAttribute('src', `./img/sizes-${++temp}.png`);
+        }
+    };
 
     document.body.addEventListener('mouseover', (event) => {
         let target = event.target;
@@ -36,8 +45,8 @@ export const sizes = () => {
 
         if (target.classList.contains(`size-${target.className.slice(-1)}`)) {
             showSizePic(target, 'none', '-1');
-        } else if (prevIndex != '') {
-            showSizePic(prevIndex, 'block', '');
+        } else {
+            clearAllPics();
         }
     });
 

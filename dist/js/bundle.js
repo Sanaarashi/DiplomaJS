@@ -384,14 +384,18 @@ var feedbackSlider = function feedbackSlider() {
     showFSlide(fSlideIndex += n);
   };
 
+  var timer = setInterval(showNextFSlide, 4000);
   nextSlBtn.addEventListener('click', function () {
+    clearInterval(timer);
+    timer = setInterval(showNextFSlide, 4000);
     showNextFSlide(1);
   });
   prevSlBtn.addEventListener('click', function () {
+    clearInterval(timer);
+    timer = setInterval(showNextFSlide, 4000);
     showNextFSlide(-1);
   });
   showFSlide(fSlideIndex);
-  setInterval(showNextFSlide, 4000);
 };
 
 /***/ }),
@@ -631,7 +635,7 @@ var moreBlocks = function moreBlocks() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "sizes", function() { return sizes; });
 var sizes = function sizes() {
-  var prevIndex = '';
+  var prevIndex = document.querySelectorAll('[class^=size-]');
 
   var showSizePic = function showSizePic(target, restInfo, onOrOff) {
     var temp = target.className.slice(-1);
@@ -641,8 +645,18 @@ var sizes = function sizes() {
       infos.forEach(function (elem) {
         return elem.style.display = restInfo;
       });
-      target.setAttribute('src', "./img/sizes-".concat(temp).concat(onOrOff, ".png"));
-      prevIndex = target;
+      target.setAttribute('src', "./img/sizes-".concat(temp).concat(onOrOff, ".png")); //prevIndex = target;
+    }
+  };
+
+  var clearAllPics = function clearAllPics() {
+    for (var i = 0; i < prevIndex.length; i++) {
+      var temp = i;
+      var infos = prevIndex[i].parentElement.querySelectorAll('p');
+      infos.forEach(function (elem) {
+        return elem.style.display = 'block';
+      });
+      prevIndex[i].setAttribute('src', "./img/sizes-".concat(++temp, ".png"));
     }
   };
 
@@ -666,8 +680,8 @@ var sizes = function sizes() {
 
     if (target.classList.contains("size-".concat(target.className.slice(-1)))) {
       showSizePic(target, 'none', '-1');
-    } else if (prevIndex != '') {
-      showSizePic(prevIndex, 'block', '');
+    } else {
+      clearAllPics();
     }
   });
 };
